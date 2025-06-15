@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+  <!-- Add your site or application content here -->
+  <div class="container">
+    <h1>Check if your browser supports HDR</h1>
+    <div>
+      <ul>
+        <li>Supports HDR: <span id="hdr">checking...</span></li>
+        <li>sRGB: <span id="srgb">checking...</span></li>
+        <li>P3: <span id="p3">checking...</span></li>
+        <li>Rec. 2020: <span id="rec2020">checking...</span></li>
+      </ul>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
+
+<script>
+ const hdrResult = document.getElementById('hdr');
+ const srgbResult = document.getElementById('srgb');
+ const p3Result = document.getElementById('p3');
+ const rec2020Result = document.getElementById('rec2020');
+
+ window.onload = () => {
+   hdrResult.innerHTML = window.matchMedia("(dynamic-range: high)").matches ? 'yes' : 'no';
+   srgbResult.innerHTML = window.matchMedia("(color-gamut: srgb)").matches ? 'yes' : 'no';
+   p3Result.innerHTML = window.matchMedia("(color-gamut: p3)").matches ? 'yes' : 'no';
+   rec2020Result.innerHTML = window.matchMedia("(color-gamut: rec2020)").matches ? 'yes' : 'no';
+ }
+</script>
+
+<style>
+  body {
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: black;
+    color: white;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+
+  li span {
+    font-weight: bold;
+  }
+</style>
