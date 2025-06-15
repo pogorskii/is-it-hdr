@@ -29,7 +29,7 @@
     <h1>Check if your browser supports HDR</h1>
     <div>
       <ul>
-        <li>Supports HDR: <span id="hdr">checking...</span></li>
+        <li>HDR: <span id="hdr">checking...</span></li>
         <li>sRGB: <span id="srgb">checking...</span></li>
         <li>P3: <span id="p3">checking...</span></li>
         <li>Rec. 2020: <span id="rec2020">checking...</span></li>
@@ -55,9 +55,13 @@
 
  window.onload = () => {
    hdrResult.innerHTML = window.matchMedia("(dynamic-range: high)").matches ? 'yes' : 'no';
+   hdrResult.style.color = hdrResult.innerHTML === 'no' ? 'red' : 'green';
    srgbResult.innerHTML = window.matchMedia("(color-gamut: srgb)").matches ? 'yes' : 'no';
+   srgbResult.style.color = srgbResult.innerHTML === 'no' ? 'red' : 'green';
    p3Result.innerHTML = window.matchMedia("(color-gamut: p3)").matches ? 'yes' : 'no';
+   p3Result.style.color = p3Result.innerHTML === 'no' ? 'red' : 'green';
    rec2020Result.innerHTML = window.matchMedia("(color-gamut: rec2020)").matches ? 'yes' : 'no';
+   rec2020Result.style.color = rec2020Result.innerHTML === 'no' ? 'red' : 'green';
  }
 </script>
 
@@ -67,6 +71,11 @@
     line-height: 1.5;
     background-color: black;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
   }
 
   .container {
@@ -94,6 +103,18 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 32px;
+  }
+
+  @media(max-width: 600px) {
+    h1 {
+      font-size: 24px;
+    }
   }
 
   .footer {
